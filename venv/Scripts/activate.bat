@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Александр\GitHub\Blackjack-learning-demo\venv
+set VIRTUAL_ENV=C:\Users\amosov\Documents\GitHub\Blackjack-learning-demo\venv
 
 if not defined PROMPT set PROMPT=$P$G
 

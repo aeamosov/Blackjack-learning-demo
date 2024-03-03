@@ -1,0 +1,30 @@
+<head>
+</head>
+
+{% extends 'base.html' %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-2">
+		<form action="/game/{{deck_id}}/draw">
+		    <input type="submit" value="Draw a card" class='btn btn-warning'/>
+		</form>	
+	</div>
+	<div class="col-md-2">
+		<form action="/game">
+		    <input type="submit" value="Reset" class='btn btn-danger'/>
+		</form>
+	</div>
+</div>
+
+<div class="row">
+    {% for card in hand %}
+        <div class="col-md-2 text-center">
+			<h6>{{ card['value'] }} of {{ card['suit'] }}</h6>
+            <img src="{{ card['image'] }}" alt="Card" style="height: 200px;">	
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

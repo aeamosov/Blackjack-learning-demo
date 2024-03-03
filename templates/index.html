@@ -6,16 +6,8 @@
 {% block title %}Main Page{% endblock %}
 
 {% block content %}
-<form action="/draw">
-    <input type="submit" value="Draw a card" class='btn btn-dark'/>
+<form action="/game">
+    <input type="submit" value="New game" class='btn btn-success'/>
 </form>
 
-<h2>Drawn Cards:</h2>
-<div class="row">
-    {% for card in drawn_cards %}
-        <div class="col-md-2">
-            <img src="{{ card }}" alt="Card" style="height: 250px;">
-        </div>
-    {% endfor %}
-</div>
 {% endblock %}

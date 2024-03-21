@@ -6,7 +6,8 @@
 {% block title %}Main Page{% endblock %}
 
 {% block content %}
-
-<h6> {{ message }} </h6>
+<form action="/game">
+    <input type="submit" value="New game" class='btn btn-success'/>
+</form>
 
 {% endblock %}

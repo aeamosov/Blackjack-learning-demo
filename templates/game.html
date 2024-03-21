@@ -1,0 +1,63 @@
+<head>
+</head>
+
+{% extends 'base.html' %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-2">
+		<form action="/game/{{deck_id}}/draw">
+		    <input type="submit" value="Draw a card" class='btn btn-warning'/>
+		</form>	
+	</div>
+	<div class="col-md-2">
+		<form action="/game">
+		    <input type="submit" value="Reset" class='btn btn-danger'/>
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div class="col-6">
+		{% if hand_value>21 %}
+		<h1> Too much =( Try again?</h1>
+		<h3 style="color:red">Your Score: {{hand_value}}</h3>
+		{% elif hand_value == 21 %}
+		<h1 style="color:green"> Victory! Try again?</h1>
+		<h3 style="color:green">Your Score: {{hand_value}}</h3>
+		{% else %}
+		<h3>Your Score: {{hand_value}}</h3>
+		{% endif %}
+		<div class="row">
+	    {% for card in hand %}
+	        <div class="col-3 text-center">
+				<p>{{ card['value'] }} of {{ card['suit'] }}</p>
+	            <img src="{{ card['image'] }}" alt="Card" style="height: 200px;">	
+	        </div>
+	    {% endfor %}
+		</div>
+	</div>
+	
+	<div class="col-6">
+		{% if dealer_hand_value>21 %}
+		<h1 style="color:green"> Victory! Try again?</h1>
+		<h3 style="color:green">Dealer's Score: {{dealer_hand_value}}</h3>
+		{% elif dealer_hand_value == 21 %}
+		<h1 style="color:green"> Bad luck =( Try again?</h1>
+		<h3 style="color:red">Dealer's Score: {{dealer_hand_value}}</h3>
+		{% else %}
+		<h3>Dealer's Score: {{dealer_hand_value}}</h3>
+		{% endif %}
+		<div class="row">
+	    {% for dealer_card in dealer_hand %}
+	        <div class="col-3 text-center">
+				<p>{{ dealer_card['value'] }} of {{ dealer_card['suit'] }}</p>
+	            <img src="{{ dealer_card['image'] }}" alt="Card" style="height: 200px;">	
+	        </div>
+	    {% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}
